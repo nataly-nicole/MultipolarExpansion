@@ -409,8 +409,8 @@ class Campo_Electrico(Tensor):
         elif nmax>=11:
             print('El orden máximo programado es 10. Favor reduzca el valor de n o programe ordenes superiores.')
             
-def save_campos_n(n,rho,xi, dx, dy, dz):
-    name_file = "campos_n_"+str(n)+".txt"
+def save_campos_n(n=0):
+    name_file = "./campos_n/campos_n_"+str(n)+".txt"
     Pot_Elec_n = Potencial_Electrico_n(rho,xi,dx,dy,dz,n=n)
     Campo_Elec_n = Campo_Electrico_n(rho,xi,dx,dy,dz,n=n)
     campos = [sp.simplify(Pot_Elec_n.components[0]), sp.simplify(Campo_Elec_n.components[0]), 
@@ -419,8 +419,8 @@ def save_campos_n(n,rho,xi, dx, dy, dz):
     file.write(sp.srepr(campos))
     file.close()
     
-def save_campos_nmax(nmax,rho,xi, dx, dy, dz):
-    name_file = "campos_nmax_"+str(nmax)+".txt"
+def save_campos_nmax(nmax=0):
+    name_file = "./campos_nmax/campos_nmax_"+str(nmax)+".txt"
     Pot_Elec = Potencial_Electrico(rho,xi,dx,dy,dz,nmax=nmax)
     Campo_Elec = Campo_Electrico(rho,xi,dx,dy,dz,nmax=nmax)
     campos = [sp.simplify(Pot_Elec.components[0]), sp.simplify(Campo_Elec.components[0]),
@@ -430,13 +430,13 @@ def save_campos_nmax(nmax,rho,xi, dx, dy, dz):
     file.close()
     
 def read_campos_n(n=0):
-    name_file = "campos_n_"+str(n)+".txt"
+    name_file = "./campos_n/campos_n_"+str(n)+".txt"
     file = open(name_file,"r").read()
     campos_n = sp.sympify(file)
     return campos_n
 
 def read_campos_nmax(nmax=0):
-    name_file = "campos_nmax_"+str(nmax)+".txt"
+    name_file = "./campos_nmax/campos_nmax_"+str(nmax)+".txt"
     file = open(name_file,"r").read()
     campos_nmax = sp.sympify(file)
     return campos_nmax
