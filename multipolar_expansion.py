@@ -341,7 +341,8 @@ class Der_partial_n(Tensor):
             print('El orden máximo programado es 10. Favor reduzca el valor de n o programe ordenes superiores.')
 
 class Potencial_Electrico_n(Tensor):
-    def __init__(self, rho, xi, dx, dy, dz, n):        xin = XIn(xi, n)
+    def __init__(self, rho, xi, dx, dy, dz, n):
+        xin = XIn(xi, n)
         qin = Qin(rho, xin, dx, dy, dz)
         der_n = Der_partial_n(1/xi.r, xi, n)
         super(Potencial_Electrico_n, self).__init__(symbol='\phi_{n} ', rank=(0,0),shape=[], coords=xi.coords)
